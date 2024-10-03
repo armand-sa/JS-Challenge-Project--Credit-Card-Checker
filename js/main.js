@@ -42,3 +42,9 @@ const batch = [
 // ----------------------------------------------------
 
 // Add your functions below:
+
+// 1. Create a function, validateCred()
+
+const validateCred = arr => {
+
+};
