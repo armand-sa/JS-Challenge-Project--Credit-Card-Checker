@@ -63,6 +63,7 @@ const validateCred = arr => {
     // if (i % 2 !== 0) {
     //   console.log(i)
     // }
+    //  TRY COUNT
     reversedArray.push(arrayToCalculateOn[i]);
   }
   
