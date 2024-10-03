@@ -44,20 +44,33 @@ const batch = [
 // Add your functions below:
 
 const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
+console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
 
 // 1. Create a function, validateCred() that has a parameter of an array
 const validateCred = arr => {
   
-
   // This function should NOT mutate the values of the original array, thus reassign
   let arrayToCalculateOn = arr.slice();
-  // Will need the last digit of the array later on:
-  let lastDigit = arrayToCalculateOn[arrayToCalculateOn.length - 1]
+
+  // Will need the last digit of the array later on & to be removed arrayToCalculateOn:
+  let lastDigit = arrayToCalculateOn.pop()
   console.log('The LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
-
-  console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn)
+  // Remove the last digit of the array 
+  // Create a reversed array where 
+  let reversedArray = [];
+  for (let i = arrayToCalculateOn.length - 1; i >= 0; i--) {
+    // if (i % 2 !== 0) {
+    //   console.log(i)
+    // }
+    reversedArray.push(arrayToCalculateOn[i]);
+  }
+  
+  
+  
+  console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
+  console.log('\nTesting array reversedArray to do calculations on:\n', reversedArray);
 };
 
 validateCred(testCaseOneValid);
-console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
+
