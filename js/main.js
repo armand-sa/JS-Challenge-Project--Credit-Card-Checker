@@ -42,8 +42,33 @@ const batch = [
 // ----------------------------------------------------
 
 // Add your functions below:
-
+console.log(valid1);
 // 1. Create a function, validateCred() that has a parameter of an array
 const validateCred = arr => {
+  // ! Step 1: 
+  // ! Remove the last digit of the array (Do NOT alter the original array).
 
+  // This function should NOT mutate the values of the original array 
+  let arrayToCalculateOn = arr;
+
+  // ! Step 2: 
+  // ! Reverse the array (without the last digit removed from the previous step).
+
+  // ! Step 3: 
+  // ! Multiply the odd digits by 2.
+
+  // ! Step 3.5: 
+  // ! Subtract 9 from numbers bigger than 9.
+
+  // ! Step 4: 
+  // ! Add up all the numbers in the array.
+
+  // ! Step 4.5: 
+  // ! Add the total and the dropped digit from Step 1. 
+  // ! If the sum modulo 10 is 0, then the array contains a valid number.
+
+  console.log('arrayToCalculateOn:\n', arrayToCalculateOn)
 };
+
+validateCred(valid1);
+valid1
