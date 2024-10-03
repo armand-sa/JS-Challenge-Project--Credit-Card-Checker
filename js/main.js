@@ -42,33 +42,22 @@ const batch = [
 // ----------------------------------------------------
 
 // Add your functions below:
-console.log(valid1);
+
+const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
+
 // 1. Create a function, validateCred() that has a parameter of an array
 const validateCred = arr => {
-  // ! Step 1: 
-  // ! Remove the last digit of the array (Do NOT alter the original array).
+  
 
-  // This function should NOT mutate the values of the original array 
-  let arrayToCalculateOn = arr;
+  // This function should NOT mutate the values of the original array, thus reassign
+  let arrayToCalculateOn = arr.slice();
+  // Will need the last digit of the array later on:
+  let lastDigit = arrayToCalculateOn[arrayToCalculateOn.length - 1]
+  console.log('The LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
-  // ! Step 2: 
-  // ! Reverse the array (without the last digit removed from the previous step).
 
-  // ! Step 3: 
-  // ! Multiply the odd digits by 2.
-
-  // ! Step 3.5: 
-  // ! Subtract 9 from numbers bigger than 9.
-
-  // ! Step 4: 
-  // ! Add up all the numbers in the array.
-
-  // ! Step 4.5: 
-  // ! Add the total and the dropped digit from Step 1. 
-  // ! If the sum modulo 10 is 0, then the array contains a valid number.
-
-  console.log('arrayToCalculateOn:\n', arrayToCalculateOn)
+  console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn)
 };
 
-validateCred(valid1);
-valid1
+validateCred(testCaseOneValid);
+console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
