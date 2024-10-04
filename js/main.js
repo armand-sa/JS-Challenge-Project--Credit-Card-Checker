@@ -44,19 +44,18 @@ const batch = [
 // Add your functions below:
 
 // TEST ARRAY which is VALID:
-const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
-console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
+// const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
+// console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
 
 // 1. Create a function, validateCred() that has a parameter of an array, it should NOT mutate the values of the original array:
 const validateCred = arr => {
-  
   // NEW ARRAY to do calculations on, as the original array CANNOT BE MUTATED 
   let arrayToCalculateOn = arr.slice();
 
   // Will need the LAST DIGIT of the array later on in calculations & it should also to be removed arrayToCalculateOn:
   let lastDigit = arrayToCalculateOn.pop();
   // FOR TESTING:
-  console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
+  // console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
   // 1 of 4 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on
   let reversedFirstHalf = [];
@@ -78,15 +77,26 @@ const validateCred = arr => {
 
   // 3 of 4 = Create ONE array, SUM the values and ADD `lastDigit`
   // 3.1 - Create one array
-  let calculationArray = reversedFirstHalf.concat(reversedSecondHalf);
-  // 3.1 - Create one array
-  
+  let mergedArray = reversedFirstHalf.concat(reversedSecondHalf);
+  // 3.2 - ADD all the numbers in the array and then ADD to that the `lastDigit` to the RESULT 
+  const finalResult = mergedArray.reduce((accumulator, currentValue) => accumulator + currentValue) + lastDigit;
+
+  // 4 of 4 = Return TRUE if valid or FALSE if invalid
+  // finalResult % 10 === 0 ? true : false;
+  // console.log('\nNEW ARRAY to do calculations on:\n')
+  if (finalResult % 10 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+
   // FOR TESTING:
-  console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
-  console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
-  console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
-  console.log('\nONE ARRAY, ready to be summed:\n', calculationArray);
+  // console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
+  // console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
+  // console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
+  // console.log('\nMERGED ARRAY, ready, BUT BEFORE summing elements:\n', mergedArray);
+  // console.log('\nALL elements SUMMED, then LAST DIGIT ADDED:\n', finalResult);
 };
 
-validateCred(testCaseOneValid);
+console.log(validateCred(valid3));
 
