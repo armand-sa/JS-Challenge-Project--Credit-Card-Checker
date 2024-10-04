@@ -104,7 +104,7 @@ const validateCred = arr => {
   // 4 of 4 = Return TRUE if valid or FALSE if invalid
   return finalResult % 10 === 0 ? true : false;
 };
-// console.log(validateCred(valid3));
+console.log(validateCred(valid3));
 
 
 /* 
