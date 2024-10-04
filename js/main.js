@@ -43,6 +43,7 @@ const batch = [
 
 // Add your functions below:
 
+// TEST ARRAY which is VALID:
 const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
 
@@ -53,27 +54,38 @@ const validateCred = arr => {
   let arrayToCalculateOn = arr.slice();
 
   // Will need the LAST DIGIT of the array later on in calculations & it should also to be removed arrayToCalculateOn:
-  let lastDigit = arrayToCalculateOn.pop()
+  let lastDigit = arrayToCalculateOn.pop();
+  // FOR TESTING:
   console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
-  // 1 of 3 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on 
+  // 1 of 4 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on
   let reversedFirstHalf = [];
-
   for (let i = arrayToCalculateOn.length - 1; i >= 0; i -= 2) {
-    reversedFirstHalf.push(arrayToCalculateOn[i]);
+    // If num multiplied by 2 is greater than 9, then take multiplied number and subtract 9
+    if (arrayToCalculateOn[i] * 2 > 9) {
+      reversedFirstHalf.push(arrayToCalculateOn[i] * 2 - 9);
+    // Else, just multiply by 2 
+    } else {
+      reversedFirstHalf.push(arrayToCalculateOn[i] * 2);
+    }
   }
   
-  // 2 of 3 = Create a reversed array - SECOND HALF of ARRAY `arrayToCalculateOn` with NO calculations
+  // 2 of 4 = Create a reversed array - SECOND HALF of ARRAY `arrayToCalculateOn` with NO calculations needed
   let reversedSecondHalf = [];
-
   for (let i = arrayToCalculateOn.length - 2; i >= 1; i -= 2) {
     reversedSecondHalf.push(arrayToCalculateOn[i]);
   }
+
+  // 3 of 4 = Create ONE array, SUM the values and ADD `lastDigit`
+  // 3.1 - Create one array
+  let calculationArray = reversedFirstHalf.concat(reversedSecondHalf);
+  // 3.1 - Create one array
   
-  
+  // FOR TESTING:
   console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
   console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
   console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
+  console.log('\nONE ARRAY, ready to be summed:\n', calculationArray);
 };
 
 validateCred(testCaseOneValid);
