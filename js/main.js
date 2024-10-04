@@ -46,30 +46,34 @@ const batch = [
 const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', testCaseOneValid);
 
-// 1. Create a function, validateCred() that has a parameter of an array
+// 1. Create a function, validateCred() that has a parameter of an array, it should NOT mutate the values of the original array:
 const validateCred = arr => {
   
-  // This function should NOT mutate the values of the original array, thus reassign
+  // NEW ARRAY to do calculations on, as the original array CANNOT BE MUTATED 
   let arrayToCalculateOn = arr.slice();
 
-  // Will need the last digit of the array later on & to be removed arrayToCalculateOn:
+  // Will need the LAST DIGIT of the array later on in calculations & it should also to be removed arrayToCalculateOn:
   let lastDigit = arrayToCalculateOn.pop()
   console.log('The LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
-  // Create a reversed array where 
-  let reversedArrayFirstHalf = [];
-  for (let i = arrayToCalculateOn.length - 1; i >= 0; i--) {
-    // if (i % 2 !== 0) {
-    //   console.log(i)
-    // }
-    //  TRY COUNT
-    reversedArrayFirstHalf.push(arrayToCalculateOn[i]);
+  // 1 of 3 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on 
+  let reversedFirstHalf = [];
+
+  for (let i = arrayToCalculateOn.length - 1; i >= 0; i -= 2) {
+    reversedFirstHalf.push(arrayToCalculateOn[i]);
+  }
+  
+  // 2 of 3 = Create a reversed array - SECOND HALF of ARRAY `arrayToCalculateOn` with NO calculations
+  let reversedSecondHalf = [];
+
+  for (let i = arrayToCalculateOn.length - 2; i >= 1; i -= 2) {
+    reversedSecondHalf.push(arrayToCalculateOn[i]);
   }
   
   
-  
   console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
-  console.log('\nTesting array reversedArray to do calculations on:\n', reversedArrayFirstHalf);
+  console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
+  console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
 };
 
 validateCred(testCaseOneValid);
