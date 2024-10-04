@@ -43,11 +43,23 @@ const batch = [
 
 // Add your functions below:
 
-// TEST ARRAY which is VALID:
-// const testCaseOneValid = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
-console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', valid3);
 
-// 1. Create a function, validateCred() that has a parameter of an array, it should NOT mutate the values of the original array:
+/* 
+* 1. 
+
+* Create a function, validateCred() that has a parameter of an array. The purpose of validateCred() is to return true when an array contains digits of a valid credit card number and false when it is invalid. This function should NOT mutate the values of the original array.
+
+* To find out if a credit card number is valid or not, use the Luhn algorithm (https://en.wikipedia.org/wiki/Luhn_algorithm#Description). Generally speaking, an algorithm is a series of steps that solve a problem — the Luhn algorithm is a series of mathematical calculations used to validate certain identification numbers, e.g. credit card numbers. The calculations in the Luhn algorithm can be broken down as the following steps:
+* 1. Starting from the farthest digit to the right, AKA the check digit, iterate to the left.
+* 2. As you iterate to the left, every other digit is doubled (the check digit is not doubled). If the number is greater than 9 after doubling, subtract 9 from its value.
+* 3. Sum up all the digits in the credit card number.
+* 4. If the sum modulo 10 is 0 (if the sum divided by 10 has a remainder of 0) then the number is valid, otherwise, it’s invalid.
+* Here’s a visual that outlines the steps (https://content.codecademy.com/PRO/independent-practice-projects/credit-card-checker/diagrams/cc%20validator%20diagram%202.svg?_gl=1*abaq3u*_gcl_aw*R0NMLjE3MjExMTU5MDEuQ2p3S0NBand0TmkwQmhBMUVpd0FXWmFBTkhjSnBIQnJBZEd1dGVPUG5laFpwaVdjaXhUcmJYSXkwS3VXTTE0RVV6Y2RodnhrbmwtaHZSb0N1X0lRQXZEX0J3RQ..*_gcl_au*MTU4MDYwOTc5MC4xNzIwNjA0ODU4*_ga*MTc4MTczMjIzMC4xNzIxMTE1MTc5*_ga_3LRZM6TM9L*MTcyNzk0OTc1Ni4xNTEuMS4xNzI3OTUxMzAxLjYwLjAuMA..). Check your function using both the provided valid and invalid numbers.
+*/
+
+// TEST ARRAY which is VALID:
+// console.log('\nORIGINAL ARRAY (Not to be MUTATED):\n', valid3);
+
 const validateCred = arr => {
   // NEW ARRAY to do calculations on, as the original array CANNOT BE MUTATED 
   let arrayToCalculateOn = arr.slice();
@@ -55,7 +67,7 @@ const validateCred = arr => {
   // Will need the LAST DIGIT of the array later on in calculations & it should also to be removed arrayToCalculateOn:
   let lastDigit = arrayToCalculateOn.pop();
   // FOR TESTING:
-  console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
+  // console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
   // 1 of 4 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on
   let reversedFirstHalf = [];
@@ -71,7 +83,7 @@ const validateCred = arr => {
   
   // 2 of 4 = Create a reversed array - SECOND HALF of ARRAY `arrayToCalculateOn` with NO calculations needed
   let reversedSecondHalf = [];
-  for (let i = arrayToCalculateOn.length - 2; i >= 1; i -= 2) {
+  for (let i = arrayToCalculateOn.length - 2; i >= 0; i -= 2) {
     reversedSecondHalf.push(arrayToCalculateOn[i]);
   }
 
@@ -82,16 +94,28 @@ const validateCred = arr => {
   const finalResult = mergedArray.reduce((accumulator, currentValue) => accumulator + currentValue) + lastDigit;
 
   // FOR TESTING:
-  console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
-  console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
-  console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
-  console.log('\nMERGED ARRAY, ready, BUT BEFORE summing elements:\n', mergedArray);
-  console.log('\nALL elements SUMMED, then LAST DIGIT ADDED:\n', finalResult);
-  console.log('\n');
+  // console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
+  // console.log('\n1ST HALF of the FUTURE RESULT ARRAY with calculations on:\n', reversedFirstHalf);
+  // console.log('\n2ND HALF of the FUTURE RESULT ARRAY with NO calculations:\n', reversedSecondHalf);
+  // console.log('\nMERGED ARRAY, ready, BUT BEFORE summing elements:\n', mergedArray);
+  // console.log('\nALL elements SUMMED, then LAST DIGIT ADDED:\n', finalResult);
+  // console.log('\n');
 
   // 4 of 4 = Return TRUE if valid or FALSE if invalid
   return finalResult % 10 === 0 ? true : false;
 };
+// console.log(validateCred(valid3));
 
-console.log(validateCred(valid3));
 
+/* 
+* 2. 
+
+* Create a function, validateCred() that has a parameter of an array. The purpose of validateCred() is to return true when an array contains digits of a valid credit card number and false when it is invalid. This function should NOT mutate the values of the original array.
+
+* To find out if a credit card number is valid or not, use the Luhn algorithm (https://en.wikipedia.org/wiki/Luhn_algorithm#Description). Generally speaking, an algorithm is a series of steps that solve a problem — the Luhn algorithm is a series of mathematical calculations used to validate certain identification numbers, e.g. credit card numbers. The calculations in the Luhn algorithm can be broken down as the following steps:
+* 1. Starting from the farthest digit to the right, AKA the check digit, iterate to the left.
+* 2. As you iterate to the left, every other digit is doubled (the check digit is not doubled). If the number is greater than 9 after doubling, subtract 9 from its value.
+* 3. Sum up all the digits in the credit card number.
+* 4. If the sum modulo 10 is 0 (if the sum divided by 10 has a remainder of 0) then the number is valid, otherwise, it’s invalid.
+* Here’s a visual that outlines the steps (https://content.codecademy.com/PRO/independent-practice-projects/credit-card-checker/diagrams/cc%20validator%20diagram%202.svg?_gl=1*abaq3u*_gcl_aw*R0NMLjE3MjExMTU5MDEuQ2p3S0NBand0TmkwQmhBMUVpd0FXWmFBTkhjSnBIQnJBZEd1dGVPUG5laFpwaVdjaXhUcmJYSXkwS3VXTTE0RVV6Y2RodnhrbmwtaHZSb0N1X0lRQXZEX0J3RQ..*_gcl_au*MTU4MDYwOTc5MC4xNzIwNjA0ODU4*_ga*MTc4MTczMjIzMC4xNzIxMTE1MTc5*_ga_3LRZM6TM9L*MTcyNzk0OTc1Ni4xNTEuMS4xNzI3OTUxMzAxLjYwLjAuMA..). Check your function using both the provided valid and invalid numbers.
+*/
