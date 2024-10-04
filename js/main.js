@@ -56,21 +56,20 @@ const validateCred = arr => {
   let lastDigit = arrayToCalculateOn.pop()
   console.log('The LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
-  // Remove the last digit of the array 
   // Create a reversed array where 
-  let reversedArray = [];
+  let reversedArrayFirstHalf = [];
   for (let i = arrayToCalculateOn.length - 1; i >= 0; i--) {
     // if (i % 2 !== 0) {
     //   console.log(i)
     // }
     //  TRY COUNT
-    reversedArray.push(arrayToCalculateOn[i]);
+    reversedArrayFirstHalf.push(arrayToCalculateOn[i]);
   }
   
   
   
   console.log('\nNEW ARRAY to do calculations on:\n', arrayToCalculateOn);
-  console.log('\nTesting array reversedArray to do calculations on:\n', reversedArray);
+  console.log('\nTesting array reversedArray to do calculations on:\n', reversedArrayFirstHalf);
 };
 
 validateCred(testCaseOneValid);
