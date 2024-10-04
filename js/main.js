@@ -104,7 +104,7 @@ const validateCred = arr => {
   // 4 of 4 = Return TRUE if valid or FALSE if invalid
   return finalResult % 10 === 0 ? true : false;
 };
-console.log(validateCred(valid3));
+console.log('\n', validateCred(valid3));
 
 
 /* 
@@ -120,4 +120,4 @@ const findInvalidCards = nestedArrays => {
   return invalidCardNumbers;
 };
 
-console.log(findInvalidCards(batch));
+console.log('\n', findInvalidCards(batch));
