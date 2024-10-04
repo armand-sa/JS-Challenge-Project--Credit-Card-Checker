@@ -110,12 +110,14 @@ const validateCred = arr => {
 /* 
 * 2. 
 
-* Create a function, validateCred() that has a parameter of an array. The purpose of validateCred() is to return true when an array contains digits of a valid credit card number and false when it is invalid. This function should NOT mutate the values of the original array.
-
-* To find out if a credit card number is valid or not, use the Luhn algorithm (https://en.wikipedia.org/wiki/Luhn_algorithm#Description). Generally speaking, an algorithm is a series of steps that solve a problem — the Luhn algorithm is a series of mathematical calculations used to validate certain identification numbers, e.g. credit card numbers. The calculations in the Luhn algorithm can be broken down as the following steps:
-* 1. Starting from the farthest digit to the right, AKA the check digit, iterate to the left.
-* 2. As you iterate to the left, every other digit is doubled (the check digit is not doubled). If the number is greater than 9 after doubling, subtract 9 from its value.
-* 3. Sum up all the digits in the credit card number.
-* 4. If the sum modulo 10 is 0 (if the sum divided by 10 has a remainder of 0) then the number is valid, otherwise, it’s invalid.
-* Here’s a visual that outlines the steps (https://content.codecademy.com/PRO/independent-practice-projects/credit-card-checker/diagrams/cc%20validator%20diagram%202.svg?_gl=1*abaq3u*_gcl_aw*R0NMLjE3MjExMTU5MDEuQ2p3S0NBand0TmkwQmhBMUVpd0FXWmFBTkhjSnBIQnJBZEd1dGVPUG5laFpwaVdjaXhUcmJYSXkwS3VXTTE0RVV6Y2RodnhrbmwtaHZSb0N1X0lRQXZEX0J3RQ..*_gcl_au*MTU4MDYwOTc5MC4xNzIwNjA0ODU4*_ga*MTc4MTczMjIzMC4xNzIxMTE1MTc5*_ga_3LRZM6TM9L*MTcyNzk0OTc1Ni4xNTEuMS4xNzI3OTUxMzAxLjYwLjAuMA..). Check your function using both the provided valid and invalid numbers.
+* Create another function, findInvalidCards() that has one parameter for a nested array of credit card numbers. The role of findInvalidCards() is to check through the nested array for which numbers are invalid, and return another nested array of invalid cards.
 */
+
+const findInvalidCards = nestedArrays => {
+  // If the batch is passed into this function, it will us .filter() as a higher-order function
+  // and use .validateCred() as a callback function to filter out and return invalid cards:
+  let invalidCardNumbers = nestedArrays.filter(element => validateCred(element) === false);
+  return invalidCardNumbers;
+};
+
+console.log(findInvalidCards(batch));
