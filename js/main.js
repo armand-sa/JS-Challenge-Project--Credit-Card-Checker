@@ -54,7 +54,7 @@ const validateCred = arr => {
 
   // Will need the LAST DIGIT of the array later on in calculations & it should also to be removed arrayToCalculateOn:
   let lastDigit = arrayToCalculateOn.pop()
-  console.log('The LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
+  console.log('\nThe LAST DIGIT of the COPY ARRAY, saved for later use:\n', lastDigit);
 
   // 1 of 3 = Create a reversed array - FIRST HALF of ARRAY `arrayToCalculateOn` to do calculations on 
   let reversedFirstHalf = [];
