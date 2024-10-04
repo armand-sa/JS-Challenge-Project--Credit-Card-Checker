@@ -104,7 +104,7 @@ const validateCred = arr => {
   // 4 of 4 = Return TRUE if valid or FALSE if invalid
   return finalResult % 10 === 0 ? true : false;
 };
-console.log('\n', validateCred(valid3));
+console.log('\n', validateCred(mystery5));
 
 
 /* 
@@ -121,3 +121,90 @@ const findInvalidCards = nestedArrays => {
 };
 
 console.log('\n', findInvalidCards(batch));
+
+
+/* 
+* 3.
+* After finding all the invalid credit card numbers, it’s also necessary to identify the credit card companies that have possibly issued these faulty numbers. 
+* Create a function, idInvalidCardCompanies() that has one parameter for a nested array of invalid numbers and returns an array of companies.
+
+* Currently, there are 4 accepted companies which each have unique first digits. The following table shows which digit is unique to which company:
+
+* First Digit | Company
+* ---------------------
+*     3       | Amex (American Express)
+*     4       | Visa
+*     5       | Mastercard
+*     6       | Discover
+* 
+* If the number doesn’t start with any of the numbers listed, print out a message like: “Company not found”.
+
+* idInvalidCardCompanies() should return an array of companies that have mailed out cards with invalid numbers.
+* This array should NOT contain duplicates, i.e. even if there are two invalid Visa cards, "Visa" should only appear once in the array.
+*/
+
+// All invalid credit card numbers
+// const invalid1 = [4, 5, 3, 2, 7, 7, 8, 7, 7, 1, 0, 9, 1, 7, 9, 5];
+// const invalid2 = [5, 7, 9, 5, 5, 9, 3, 3, 9, 2, 1, 3, 4, 6, 4, 3];
+// const invalid3 = [3, 7, 5, 7, 9, 6, 0, 8, 4, 4, 5, 9, 9, 1, 4];
+// const invalid4 = [6, 0, 1, 1, 1, 2, 7, 9, 6, 1, 7, 7, 7, 9, 3, 5];
+// const invalid5 = [5, 3, 8, 2, 0, 1, 9, 7, 7, 2, 8, 8, 3, 8, 5, 4];
+// const mystery1 = [3, 4, 4, 8, 0, 1, 9, 6, 8, 3, 0, 5, 4, 1, 4];
+// const mystery3 = [6, 0, 1, 1, 3, 7, 7, 0, 2, 0, 9, 6, 2, 6, 5, 6, 2, 0, 3];
+// const mystery4 = [4, 9, 2, 9, 8, 7, 7, 1, 6, 9, 2, 1, 7, 0, 9, 3];
+
+// An batch array of invalid credit card numbers 
+const invalidBatch = [
+  invalid1,
+  invalid2,
+  invalid3,
+  invalid4,
+  invalid5,
+  mystery1,
+  mystery3,
+  mystery4
+];
+
+const idInvalidCardCompanies = nestedArrays => {
+  // Identify the first element in the array and save it to an array
+  let firstElement = [];
+
+  nestedArrays.forEach(element => {
+    firstElement.push(element[0])
+  });
+  // FOR TESTING:
+  console.log('\nArray with the first elements of the array\n', firstElement);
+  
+  // Replace first digit with company name
+  let companyName = [];
+
+  for (let element of firstElement) {
+    switch(element) {
+      case 3:
+        companyName.push('Amex (American Express)');
+        break;
+      case 4:
+        companyName.push('Visa');
+        break;
+      case 5:
+        companyName.push('Mastercard');
+        break;
+      case 6:
+        companyName.push('Discover');
+        break;
+      default:
+        console.log('\nCompany not found\n');
+        break;
+    }
+  };
+  // FOR TESTING:
+  // console.log('\nArray where numbers are replaced with the company names, BEFORE duplicates removed\n', companyName);
+
+  // Remove duplicate values
+  const uniqueCompanyArray = [...new Set(companyName)];
+  // FOR TESTING:
+  // console.log('\nArray where DUPLICATE company names have been REMOVED\n', uniqueCompanyArray);
+  return uniqueCompanyArray;
+};
+
+console.log('\n', idInvalidCardCompanies(invalidBatch));
