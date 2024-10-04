@@ -61,11 +61,3 @@ Currently, there are 4 accepted companies which each have unique first digits. T
 If the number doesn’t start with any of the numbers listed, print out a message like: “Company not found”.
 
 `idInvalidCardCompanies()` should return an array of companies that have mailed out cards with invalid numbers. This array should NOT contain duplicates, i.e. even if there are two invalid Visa cards, `"Visa"` should only appear once in the array.
-
-___
-
-### If you’d like to challenge yourself further, you could consider the following:
-
-- Use different credit card numbers from [a credit card number generator and validator site](https://www.freeformatter.com/credit-card-number-generator-validator.html) and test if your functions work for all types of credit cards.
-- To make it easier to test credit card numbers, create a function that accepts a string and converts it into an array of numbers like the initially provided arrays. (Check the hint for a helpful function)
-- Create a function that will convert invalid numbers into valid numbers.
